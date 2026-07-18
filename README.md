@@ -1,14 +1,43 @@
 # Ghulam Mustafa — Portfolio Website
 
-A premium, animated Next.js + Tailwind CSS portfolio site for a Guest
-Posting & SEO expert.
+A premium, agency-grade portfolio site for a Guest Posting Expert & SEO
+Specialist, built with **Next.js 14 (App Router)**, **Tailwind CSS**, and
+**Framer Motion**.
 
 ## Tech stack
 
-- **Next.js 14** (App Router)
-- **Tailwind CSS** — custom design tokens (colors, shadows, animations)
-- **Framer Motion** — scroll reveals, hero entrance, animated counters
-- **lucide-react** — icon set
+- Next.js 14 (App Router, `next/font`, `next/image`)
+- Tailwind CSS (custom design tokens: navy / royal blue / ember orange)
+- Framer Motion (scroll reveals, floating elements, animated counters)
+- lucide-react (icon set)
+
+## Project structure
+
+```
+rankorbit-portfolio/
+├── app/
+│   ├── layout.js        # Fonts, SEO metadata, root HTML shell
+│   ├── page.js           # Assembles all sections
+│   └── globals.css       # Design tokens, glassmorphism, buttons
+├── components/
+│   ├── Navbar.jsx
+│   ├── Hero.jsx
+│   ├── About.jsx
+│   ├── Services.jsx
+│   ├── WhyChooseMe.jsx
+│   ├── Stats.jsx
+│   ├── Portfolio.jsx
+│   ├── Testimonials.jsx
+│   ├── Process.jsx
+│   ├── Contact.jsx
+│   └── Footer.jsx
+├── public/
+│   └── profile.jpg       # Profile photo
+├── tailwind.config.js
+├── postcss.config.js
+├── next.config.js
+└── package.json
+```
 
 ## Getting started
 
@@ -23,53 +52,20 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ```bash
 npm run build
-npm start
+npm run start
 ```
-
-## Project structure
-
-```
-app/
-  layout.js        Root layout, fonts, SEO metadata
-  page.js           Assembles all sections
-  globals.css        Tailwind + custom utility classes
-  robots.js / sitemap.js
-components/
-  Navbar.jsx
-  Hero.jsx           Signature "Authority Climb" ranking graphic
-  Stats.jsx           Animated counters
-  About.jsx
-  Services.jsx
-  WhyChooseMe.jsx
-  Portfolio.jsx
-  Testimonials.jsx
-  Process.jsx         Timeline
-  Contact.jsx          Contact form
-  Footer.jsx
-  ui/
-    Reveal.jsx        Scroll-triggered fade/slide wrapper
-    Counter.jsx        Spring-animated number counter
-public/
-  profile.jpg          Profile photo
-```
-
-## Customizing
-
-- **Colors / fonts**: edit `tailwind.config.js` (`navy`, `royal`, `ember`
-  tokens) and the font imports in `app/layout.js`.
-- **Copy**: all section content lives directly inside each component in
-  `components/`.
-- **Contact form**: `components/Contact.jsx` currently only sets local
-  state on submit. Wire it up to a form service (e.g. Formspree, Resend)
-  or create an API route at `app/api/contact/route.js` to actually send
-  messages.
-- **Profile photo**: replace `public/profile.jpg` with a new image (same
-  filename, or update the `src` in `components/About.jsx`).
 
 ## Notes
 
-- Respects `prefers-reduced-motion` for accessibility.
-- Fully responsive from mobile through desktop.
-- SEO metadata, `robots.js`, and `sitemap.js` are pre-configured — update
-  the domain in `app/layout.js`, `app/robots.js`, and `app/sitemap.js` if
-  it changes.
+- **Colors**: Dark Navy `#0B1F3A`, Royal Blue `#0A5CFF`, Ember Orange
+  `#FF7A00` (CTA-only), White background — defined as Tailwind tokens in
+  `tailwind.config.js` so they're reusable everywhere.
+- **Fonts**: Poppins (display/headings) + Inter (body), loaded via
+  `next/font/google` for automatic self-hosting and zero layout shift.
+- **Contact form**: currently simulates a submit locally. Wire the
+  `handleSubmit` function in `components/Contact.jsx` up to an API route,
+  Formspree, or your email service of choice to receive real submissions.
+- **Images**: replace `public/profile.jpg` to update the profile photo used
+  in the hero and about sections.
+- Respects `prefers-reduced-motion` and has visible keyboard focus states
+  throughout.
